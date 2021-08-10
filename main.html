@@ -1,0 +1,121 @@
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+  <link rel="stylesheet" href="main.css" />
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" />
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-cookie/1.4.1/jquery.cookie.min.js"></script>
+
+
+  <title>Perch fishing festival</title>
+</head>
+
+<body>
+  <!-- Input form -->
+  <div class="image">
+    <img src="banner.png" alt="butterfly" />
+  </div>
+
+  <div class="container-contact">
+    <div class="wrap-contact">
+      <br><br>
+      <div class="contact-form-title">
+        Please complete the entry form below:
+      </div>
+      <form id="memoForm" enctype= "multipart/form-data">
+
+        <label>NAME<span style="color: red"> *</span></label>
+        <input type="text" name="fname" id="fname" placeholder="Name" required />
+        <span id="usercheck" style="color: red">
+          **Username is missing
+        </span><br><br>
+
+
+        <label>EMAIL<span style="color: red"> *</span></label>
+        <input type="email" name="email" id="email" required placeholder="Email" />
+        <span id="emailcheck" style="color: red">**Email address missing</span><br><br>
+
+        <label>PHONE<span style="color: red"> *</span></label>
+        <input type="text" name="phone" id="phone" required placeholder="(xxx) xxx-xxxx" maxlength=14 />
+        <span id="phonecheck" style="color: red;">**Phone number missing</span>
+        <br><br>
+
+        <label>FISHING REGISTRATION# <span style="color: red"> *</span></label>
+        <input type="text" name="reg" id="reg" required placeholder="Registration#" maxlength="6"  style="text-transform: uppercase; "/>
+        <span id="regcheck" style="color: red; ">**Registration Number Missing</span><br><br>
+
+        <label>ATTACH YOUR PHOTO<span style="color: red"> *</span></label><br>
+        <button id="files" onclick="document.getElementById('fileUpload').click(); return false;">Choose File </button>
+        <div id="fileSelected"
+          style=
+          "display: inline-block;
+           width: 300px;
+           white-space: nowrap;
+           text-overflow: ellipsis;">
+        </div>
+        <br />
+        <label style="color:grey">Photo size must be less than 3MB </label><br>
+        <span id="uploading"></span>
+
+
+        <input type="file" id="fileUpload" style="visibility: hidden;" accept="image/*;capture=camera" required />
+        <span id="image" style="color: red"></span>
+
+        <label>AGE CONFIRMATION<span style="color: red">
+            *</span></label><br>
+        <input type="radio" id="age1" name="age" />
+        <label>CHILD (UNDER 16 YEARS OF AGE)</label><br>
+        <input type="radio" id="age2" name="age" />
+        <label>ADULT</label><br>
+        
+        <div id="captcha"></div><br>
+        <input type="text" name="captcha" id="texts" placeholder="Fill the answer" required />
+        <span id="captchacheck" style="color: red;" >**Please Fill the Answer
+        </span><br><br>
+        <label>CONTEST RULES<span style="color: red"> *</span></label><br>
+        <input type="checkbox" class="check" id="check" required /> I AGREE TO THE
+
+        <a href="https://www.neighbur.com/contest/perchfestival_rules.pdf" target="_blank" style="color:red;">CONTEST
+          RULES & LIABILITY REGULATIONS
+        </a><br><br>
+        <span id="result"></span>
+        <div class ="loader"></div>
+        <button type="submit" id="mybtn" disabled="disabled">Submit</button>
+      </form>
+    </div>
+  </div>
+
+  <!-- The core Firebase JS SDK is always required and must be listed first -->
+  <script src="https://www.gstatic.com/firebasejs/8.9.0/firebase-app.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/8.9.0/firebase-firestore.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/8.9.0/firebase-storage.js"></script>
+  
+  <script>
+    // Initialize Firebase
+    var firebaseConfig = {
+    apiKey: "AIzaSyCEBbeYnKTMP4EGHl88fmKiojldEuNNUZE",
+    authDomain: "aug-web-form.firebaseapp.com",
+    projectId: "aug-web-form",
+    storageBucket: "aug-web-form.appspot.com",
+    messagingSenderId: "818176522590",
+    appId: "1:818176522590:web:b921821e9d2c88855bf7cf",
+    measurementId: "G-E8L9NPZTVT"
+  };
+    //     // Initialize Firebase
+    firebase.initializeApp(firebaseConfig);
+    //     // make firestore references
+
+    var db = firebase.firestore();
+    var storage = firebase.storage();
+
+    //     // update firestore settings
+    db.settings({ timestampsInSnapshots: true });
+  </script>
+
+  <script src="main.js"></script>
+</body>
+
+</html>
